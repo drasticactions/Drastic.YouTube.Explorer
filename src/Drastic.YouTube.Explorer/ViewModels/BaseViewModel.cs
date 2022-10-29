@@ -5,6 +5,7 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Drastic.YouTube.Explorer.Events;
 using Drastic.YouTube.Explorer.Services;
 
 namespace Drastic.YouTube.Explorer.ViewModels
@@ -14,6 +15,9 @@ namespace Drastic.YouTube.Explorer.ViewModels
     /// </summary>
     public class BaseViewModel : INotifyPropertyChanged
     {
+        private bool isBusy;
+        private string title = "Drastic.YouTube.Explorer";
+
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseViewModel"/> class.
         /// </summary>
@@ -22,13 +26,43 @@ namespace Drastic.YouTube.Explorer.ViewModels
         {
             ArgumentNullException.ThrowIfNull(services, nameof(services));
             this.Services = services;
+            this.Client = services.GetService(typeof(YoutubeClient)) as YoutubeClient ?? throw new NullReferenceException(nameof(YoutubeClient));
             this.Dispatcher = services.GetService(typeof(IAppDispatcher)) as IAppDispatcher ?? throw new NullReferenceException(nameof(IAppDispatcher));
             this.ErrorHandler = services.GetService(typeof(IErrorHandlerService)) as IErrorHandlerService ?? throw new NullReferenceException(nameof(IErrorHandlerService));
             this.Platform = services.GetService(typeof(IPlatformService)) as IPlatformService ?? throw new NullReferenceException(nameof(IPlatformService));
         }
 
+        /// <summary>
+        /// Gets a baseline navigation handler.
+        /// Handle this to handle navigation events within the view model.
+        /// </summary>
+        public event EventHandler<NavigationEventArgs>? Navigation;
+
         /// <inheritdoc/>
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the VM is busy.
+        /// </summary>
+        public bool IsBusy
+        {
+            get { return this.isBusy; }
+            set { this.SetProperty(ref this.isBusy, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the title.
+        /// </summary>
+        public string Title
+        {
+            get { return this.title; }
+            set { this.SetProperty(ref this.title, value); }
+        }
+
+        /// <summary>
+        /// Gets the YouTube Client.
+        /// </summary>
+        internal YoutubeClient Client { get; }
 
         /// <summary>
         /// Gets the Error Handler.
@@ -55,6 +89,28 @@ namespace Drastic.YouTube.Explorer.ViewModels
         /// </summary>
         public virtual void RaiseCanExecuteChanged()
         {
+        }
+
+        /// <summary>
+        /// Called on VM Load.
+        /// </summary>
+        /// <returns><see cref="Task"/>.</returns>
+        public virtual Task OnLoad()
+        {
+            return Task.CompletedTask;
+        }
+
+        /// <summary>
+        /// Sends a navigation request to whatever handlers attach to it.
+        /// </summary>
+        /// <param name="viewModel">The view model type.</param>
+        /// <param name="arguments">Arguments to send to the view model.</param>
+        public void SendNavigationRequest(Type viewModel, object? arguments = default)
+        {
+            if (viewModel.IsSubclassOf(typeof(BaseViewModel)))
+            {
+                this.Navigation?.Invoke(this, new NavigationEventArgs(viewModel, arguments));
+            }
         }
 
 #pragma warning disable SA1600 // Elements should be documented
