@@ -9,6 +9,9 @@ using Drastic.YouTube.Explorer.Services;
 
 namespace Drastic.YouTube.Explorer.ViewModels
 {
+    /// <summary>
+    /// Base View Model.
+    /// </summary>
     public class BaseViewModel : INotifyPropertyChanged
     {
         /// <summary>
@@ -21,6 +24,7 @@ namespace Drastic.YouTube.Explorer.ViewModels
             this.Services = services;
             this.Dispatcher = services.GetService(typeof(IAppDispatcher)) as IAppDispatcher ?? throw new NullReferenceException(nameof(IAppDispatcher));
             this.ErrorHandler = services.GetService(typeof(IErrorHandlerService)) as IErrorHandlerService ?? throw new NullReferenceException(nameof(IErrorHandlerService));
+            this.Platform = services.GetService(typeof(IPlatformService)) as IPlatformService ?? throw new NullReferenceException(nameof(IPlatformService));
         }
 
         /// <inheritdoc/>
@@ -40,6 +44,11 @@ namespace Drastic.YouTube.Explorer.ViewModels
         /// Gets the Dispatcher.
         /// </summary>
         internal IAppDispatcher Dispatcher { get; }
+
+        /// <summary>
+        /// Gets the Platform services.
+        /// </summary>
+        internal IPlatformService Platform { get; }
 
         /// <summary>
         /// Called when wanting to raise a Command Can Execute.

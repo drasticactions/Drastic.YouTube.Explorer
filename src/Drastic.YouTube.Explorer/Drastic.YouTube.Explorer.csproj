@@ -13,6 +13,7 @@
 		<None Remove="ViewModels\" />
 		<None Remove="Services\" />
 		<None Remove="Events\" />
+		<None Remove="Tools\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Drastic.YouTube" Version="6.6.8" />
@@ -23,5 +24,6 @@
 		<Folder Include="ViewModels\" />
 		<Folder Include="Services\" />
 		<Folder Include="Events\" />
+		<Folder Include="Tools\" />
 	</ItemGroup>
 </Project>
