@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<AdditionalFiles Include="..\..\stylecop.json" Link="stylecop.json" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="Drastic.YouTube" />
+		<None Remove="ViewModels\" />
+		<None Remove="Services\" />
+		<None Remove="Events\" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Drastic.YouTube" Version="6.6.8" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="ViewModels\" />
+		<Folder Include="Services\" />
+		<Folder Include="Events\" />
+	</ItemGroup>
+</Project>
