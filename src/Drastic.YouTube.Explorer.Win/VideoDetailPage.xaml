@@ -6,15 +6,21 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:common="using:Drastic.YouTube.Explorer.Translations"
+    xmlns:usercontrols="using:Drastic.YouTube.Explorer.Win.UserControls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <CommandBar HorizontalAlignment="Left" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
             <AppBarButton Command="{x:Bind vm.ShareLinkCommand, Mode=OneWay}" CommandParameter="{x:Bind vm.Video, Mode=OneWay}" Icon="Share" Label="{x:Bind common:Common.ShareButtonText}"/>
             <AppBarButton Icon="Go" Label="{x:Bind common:Common.OpenBrowserText}" Command="{x:Bind vm.OpenBrowserCommand, Mode=OneWay}" CommandParameter="{x:Bind vm.Video, Mode=OneWay}" />
         </CommandBar>
+
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <usercontrols:ThumbnailListControl ThumbnailList="{x:Bind vm.Video.Thumbnails, Mode=OneWay}" />
+        </StackPanel>
     </Grid>
 </local:BasePage>
