@@ -4,6 +4,7 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using WinUIEx;
 
 namespace Drastic.YouTube.Explorer.Win
 {
@@ -24,6 +25,8 @@ namespace Drastic.YouTube.Explorer.Win
 
             this.MainFrame.Content = this.page = page;
             page.DataContextChanged += this.Page_DataContextChanged;
+            var manager = WindowManager.Get(this);
+            manager.Backdrop = new MicaSystemBackdrop();
         }
 
         private void Page_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)

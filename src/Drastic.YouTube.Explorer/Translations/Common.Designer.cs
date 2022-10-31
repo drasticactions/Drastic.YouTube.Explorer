@@ -70,6 +70,69 @@ namespace Drastic.YouTube.Explorer.Translations {
         }
         
         /// <summary>
+        ///   Author:  に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AuthorHeader {
+            get {
+                return ResourceManager.GetString("AuthorHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Average Rating:  に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AverageRatingHeader {
+            get {
+                return ResourceManager.GetString("AverageRatingHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Chapters: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ChaptersHeader {
+            get {
+                return ResourceManager.GetString("ChaptersHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Description に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string DescriptionHeader {
+            get {
+                return ResourceManager.GetString("DescriptionHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Total Dislikes: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string DislikeCountHeader {
+            get {
+                return ResourceManager.GetString("DislikeCountHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Duration: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string DurationHeader {
+            get {
+                return ResourceManager.GetString("DurationHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Total Likes: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string LikeCountHeader {
+            get {
+                return ResourceManager.GetString("LikeCountHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Loading Metadata... に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string LoadingMetadata {
@@ -93,6 +156,51 @@ namespace Drastic.YouTube.Explorer.Translations {
         public static string ShareButtonText {
             get {
                 return ResourceManager.GetString("ShareButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Start:  に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string StartHeader {
+            get {
+                return ResourceManager.GetString("StartHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Stats に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string StatsHeader {
+            get {
+                return ResourceManager.GetString("StatsHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Thumbnails に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ThumbnailHeader {
+            get {
+                return ResourceManager.GetString("ThumbnailHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Title:  に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TitlesHeader {
+            get {
+                return ResourceManager.GetString("TitlesHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Views:  に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ViewsHeader {
+            get {
+                return ResourceManager.GetString("ViewsHeader", resourceCulture);
             }
         }
     }

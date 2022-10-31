@@ -17,6 +17,7 @@
 	<ItemGroup>
 	  <None Remove="BaseWindow.xaml" />
 	  <None Remove="DebugWindow.xaml" />
+	  <None Remove="UserControls\HolderControl.xaml" />
 	  <None Remove="UserControls\ThumbnailListControl.xaml" />
 	  <None Remove="VideoDetailPage.xaml" />
 	</ItemGroup>
@@ -34,15 +35,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-		<PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
 		<PackageReference Include="Microsoft.Windows.CsWin32" Version="0.1.647-beta">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.2.220902.1-preview1" />
 		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.194" />
+		<PackageReference Include="WinUIEx" Version="1.8.0" />
 		<Manifest Include="$(ApplicationManifest)" />
 	</ItemGroup>
 
@@ -56,6 +58,11 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Drastic.YouTube.Explorer\Drastic.YouTube.Explorer.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="UserControls\HolderControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
 	</ItemGroup>
 	<ItemGroup>
 	  <Page Update="DebugWindow.xaml">

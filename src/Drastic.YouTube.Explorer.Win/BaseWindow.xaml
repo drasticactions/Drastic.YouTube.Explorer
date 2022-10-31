@@ -1,4 +1,5 @@
 <Window
+    xmlns:winuiex="using:WinUIEx"
     x:Class="Drastic.YouTube.Explorer.Win.BaseWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -9,7 +10,7 @@
     xmlns:media="using:Microsoft.UI.Xaml.Media"
     mc:Ignorable="d">
     <Window.Content>
-        <Grid x:Name="MainGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid x:Name="MainGrid" Background="{ThemeResource HomePageBackgroundBrush}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="32"/>

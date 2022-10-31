@@ -12,8 +12,38 @@
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
-            <!-- Other app resources here -->
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="Transparent"/>
+                    <SolidColorBrush x:Key="PageHeaderForegroundBrush" Color="Black"/>
+                    <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
+                    <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="Transparent" />
+                    <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
+                    <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
+                    <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="Transparent"/>
+                    <SolidColorBrush x:Key="PageHeaderForegroundBrush" Color="White"/>
+                    <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
+                    <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="Transparent" />
+                    <Thickness x:Key="SearchBoxBorderThickness">0</Thickness>
+                    <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
+                    <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="HighContrast">
+                    <SolidColorBrush x:Key="HomePageBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
+                    <SolidColorBrush x:Key="PageHeaderForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}"/>
+                    <SolidColorBrush x:Key="ControlExampleDisplayBrush" Color="{ThemeResource SystemColorWindowColor}" />
+                    <SolidColorBrush x:Key="SearchBoxBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
+                    <Thickness x:Key="SearchBoxBorderThickness">2</Thickness>
+                    <Thickness x:Key="ControlExampleDisplayBorderThickness">1</Thickness>
+                    <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
 
+            <CornerRadius x:Key="ControlCornerRadius">4</CornerRadius>
+            
             <DataTemplate x:Key="WaitTemplate">
                 <StackPanel Orientation="Horizontal" Padding="12">
                     <ProgressRing IsActive="True" Margin="0,0,12,0" Foreground="{ThemeResource Brush-Blue-01}" />

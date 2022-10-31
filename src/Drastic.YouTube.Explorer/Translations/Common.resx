@@ -120,6 +120,27 @@
   <data name="AppTitle" xml:space="preserve">
     <value>Drastic.YouTube.Explorer</value>
   </data>
+  <data name="AuthorHeader" xml:space="preserve">
+    <value>Author: </value>
+  </data>
+  <data name="AverageRatingHeader" xml:space="preserve">
+    <value>Average Rating: </value>
+  </data>
+  <data name="ChaptersHeader" xml:space="preserve">
+    <value>Chapters:</value>
+  </data>
+  <data name="DescriptionHeader" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DislikeCountHeader" xml:space="preserve">
+    <value>Total Dislikes:</value>
+  </data>
+  <data name="DurationHeader" xml:space="preserve">
+    <value>Duration:</value>
+  </data>
+  <data name="LikeCountHeader" xml:space="preserve">
+    <value>Total Likes:</value>
+  </data>
   <data name="LoadingMetadata" xml:space="preserve">
     <value>Loading Metadata...</value>
   </data>
@@ -128,5 +149,20 @@
   </data>
   <data name="ShareButtonText" xml:space="preserve">
     <value>Share</value>
+  </data>
+  <data name="StartHeader" xml:space="preserve">
+    <value>Start: </value>
+  </data>
+  <data name="StatsHeader" xml:space="preserve">
+    <value>Stats</value>
+  </data>
+  <data name="ThumbnailHeader" xml:space="preserve">
+    <value>Thumbnails</value>
+  </data>
+  <data name="TitlesHeader" xml:space="preserve">
+    <value>Title: </value>
+  </data>
+  <data name="ViewsHeader" xml:space="preserve">
+    <value>Views: </value>
   </data>
 </root>

@@ -4,28 +4,25 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Drastic.YouTube.Explorer.Win.UserControls"
     xmlns:drastic="using:Drastic.YouTube.Common"
+    xmlns:common="using:Drastic.YouTube.Explorer.Translations"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,16" Text="Thumbnails" />
-        <GridView Grid.Row="1" IsItemClickEnabled="True" SelectionMode="None" ItemsSource="{Binding ThumbnailList}">
-            <GridView.ItemTemplate>
-                <DataTemplate x:DataType="drastic:Thumbnail">
-                    <Grid CornerRadius="2" Width="100" Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}">
-                        <Image Source="{x:Bind Url}" Stretch="Uniform"/>
-                        <StackPanel Orientation="Vertical" Height="20" VerticalAlignment="Bottom" 
+    <local:HolderControl Title="{x:Bind common:Common.ThumbnailHeader}">
+        <local:HolderControl.MainViewContent>
+            <GridView ItemClick="GridView_ItemClick" IsItemClickEnabled="True" SelectionMode="None" ItemsSource="{Binding ThumbnailList, Mode=OneWay}">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="drastic:Thumbnail">
+                        <Grid CornerRadius="{StaticResource ControlCornerRadius}" Width="100" Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}">
+                            <Image Source="{x:Bind Url}" VerticalAlignment="Center" Stretch="UniformToFill"/>
+                            <StackPanel Orientation="Vertical" Height="20" VerticalAlignment="Bottom" 
                                     Background="{ThemeResource AppBarBackgroundThemeBrush}" Opacity=".75">
-                            <TextBlock HorizontalAlignment="Center" Text="{x:Bind Resolution.ToString()}"/>
-                        </StackPanel>
-                    </Grid>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
-    </Grid>
+                                <TextBlock HorizontalAlignment="Center" Text="{x:Bind Resolution.ToString()}"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </local:HolderControl.MainViewContent>
+    </local:HolderControl>
 </UserControl>
