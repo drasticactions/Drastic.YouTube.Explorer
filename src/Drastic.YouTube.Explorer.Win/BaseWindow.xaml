@@ -9,9 +9,21 @@
     xmlns:media="using:Microsoft.UI.Xaml.Media"
     mc:Ignorable="d">
     <Window.Content>
-        <Grid>
-            <Frame VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="MainFrame" />
-            <controls:Loading x:Name="LoadingControl" IsLoading="{Binding IsBusy}">
+        <Grid x:Name="MainGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" x:Name="AppTitleBar" Grid.Row="0" Height="34">
+                    <Image  Margin="8,0,0,0" Width="32" Height="32" Source="Assets/Images/favicon.png" x:Name="AppIcon" />
+                    <TextBlock x:Name="AppTitleTextBlock" Text="{Binding Title}"
+                       Style="{StaticResource CaptionTextBlockStyle}"
+                       Margin="12,0,0,0" VerticalAlignment="Center" />
+                </StackPanel>
+                <Frame Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="MainFrame" />
+            </Grid>
+            <controls:Loading IsLoading="{Binding IsBusy}">
                 <controls:Loading.Background>
                     <media:AcrylicBrush Opacity=".9"
                               TintColor="Black"

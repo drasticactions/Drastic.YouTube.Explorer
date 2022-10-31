@@ -16,7 +16,7 @@ namespace Drastic.YouTube.Explorer.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         private bool isBusy;
-        private string title = "Drastic.YouTube.Explorer";
+        private string title = Translations.Common.AppTitle;
         private string isLoadingText = string.Empty;
 
         /// <summary>
@@ -145,6 +145,23 @@ namespace Drastic.YouTube.Explorer.ViewModels
             if (viewModel.IsSubclassOf(typeof(BaseViewModel)))
             {
                 this.Navigation?.Invoke(this, new NavigationEventArgs(viewModel, arguments));
+            }
+        }
+
+        /// <summary>
+        /// Update title of view model.
+        /// </summary>
+        /// <param name="title">Title.</param>
+        /// <param name="includeAppName">Include App Name in title.</param>
+        internal void UpdateTitle(string title, bool includeAppName = true)
+        {
+            if (includeAppName)
+            {
+                this.Title = $"{Translations.Common.AppTitle} - {title}";
+            }
+            else
+            {
+                this.Title = title;
             }
         }
 

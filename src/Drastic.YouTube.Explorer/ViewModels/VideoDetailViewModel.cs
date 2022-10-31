@@ -49,6 +49,7 @@ namespace Drastic.YouTube.Explorer.ViewModels
         private async Task UpdateVideo(CancellationToken token = default)
         {
             this.Video = await this.Client.Videos.GetAsync(this.videoId, token);
+            this.UpdateTitle(this.Video.Title);
         }
     }
 }

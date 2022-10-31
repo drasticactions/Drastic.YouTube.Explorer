@@ -61,6 +61,15 @@ namespace Drastic.YouTube.Explorer.Translations {
         }
         
         /// <summary>
+        ///   Drastic.YouTube.Explorer に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AppTitle {
+            get {
+                return ResourceManager.GetString("AppTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Loading Metadata... に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string LoadingMetadata {

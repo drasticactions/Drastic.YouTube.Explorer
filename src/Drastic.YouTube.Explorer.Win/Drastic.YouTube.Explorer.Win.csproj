@@ -12,6 +12,9 @@
 		<EnableMsixTooling>true</EnableMsixTooling>
 	</PropertyGroup>
 	<ItemGroup>
+	  <Content Remove="Assets\favicon.png" />
+	</ItemGroup>
+	<ItemGroup>
 	  <None Remove="BaseWindow.xaml" />
 	  <None Remove="DebugWindow.xaml" />
 	  <None Remove="VideoDetailPage.xaml" />

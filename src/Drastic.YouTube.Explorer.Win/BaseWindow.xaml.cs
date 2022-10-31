@@ -18,13 +18,17 @@ namespace Drastic.YouTube.Explorer.Win
         public BaseWindow(Page page)
         {
             this.InitializeComponent();
+
+            this.ExtendsContentIntoTitleBar = true;
+            this.SetTitleBar(this.AppTitleBar);
+
             this.MainFrame.Content = this.page = page;
             page.DataContextChanged += this.Page_DataContextChanged;
         }
 
         private void Page_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
-            this.LoadingControl.DataContext = args.NewValue;
+            this.MainGrid.DataContext = args.NewValue;
         }
     }
 }
