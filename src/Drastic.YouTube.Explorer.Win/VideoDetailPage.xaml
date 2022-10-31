@@ -5,9 +5,16 @@
     xmlns:local="using:Drastic.YouTube.Explorer.Win"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:common="using:Drastic.YouTube.Explorer.Translations"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="MyButton_Click">Click Me</Button>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <CommandBar HorizontalAlignment="Left" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
+            <AppBarButton Command="{x:Bind vm.ShareLinkCommand, Mode=OneWay}" CommandParameter="{x:Bind vm.Video, Mode=OneWay}" Icon="Share" Label="{x:Bind common:Common.ShareButtonText}"/>
+            <AppBarButton Icon="Go" Label="{x:Bind common:Common.OpenBrowserText}" Command="{x:Bind vm.OpenBrowserCommand, Mode=OneWay}" CommandParameter="{x:Bind vm.Video, Mode=OneWay}" />
+        </CommandBar>
+    </Grid>
 </local:BasePage>

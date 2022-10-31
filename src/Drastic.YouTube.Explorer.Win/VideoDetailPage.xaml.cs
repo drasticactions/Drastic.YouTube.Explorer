@@ -30,7 +30,7 @@ namespace Drastic.YouTube.Explorer.Win
     /// </summary>
     public sealed partial class VideoDetailPage : BasePage
     {
-        private VideoDetailViewModel vm;
+        public VideoDetailViewModel vm;
 
         public VideoDetailPage(VideoId videoId)
             : base()
@@ -44,12 +44,6 @@ namespace Drastic.YouTube.Explorer.Win
         {
             this.InitializeComponent();
             this.DataContext = Ioc.Default.ResolveWith<VideoDetailViewModel>(video);
-        }
-
-        private void MyButton_Click(object sender, RoutedEventArgs e)
-        {
-            myButton.Content = "Clicked";
-            this.vm.IsBusy = true;
         }
     }
 }

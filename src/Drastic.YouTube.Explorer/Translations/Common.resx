@@ -123,4 +123,10 @@
   <data name="LoadingMetadata" xml:space="preserve">
     <value>Loading Metadata...</value>
   </data>
+  <data name="OpenBrowserText" xml:space="preserve">
+    <value>Open Browser</value>
+  </data>
+  <data name="ShareButtonText" xml:space="preserve">
+    <value>Share</value>
+  </data>
 </root>

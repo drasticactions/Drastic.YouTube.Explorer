@@ -77,5 +77,23 @@ namespace Drastic.YouTube.Explorer.Translations {
                 return ResourceManager.GetString("LoadingMetadata", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Open Browser に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string OpenBrowserText {
+            get {
+                return ResourceManager.GetString("OpenBrowserText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Share に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ShareButtonText {
+            get {
+                return ResourceManager.GetString("ShareButtonText", resourceCulture);
+            }
+        }
     }
 }
