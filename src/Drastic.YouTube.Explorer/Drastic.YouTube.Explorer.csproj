@@ -9,20 +9,22 @@
 		<AdditionalFiles Include="..\..\stylecop.json" Link="stylecop.json" />
 	</ItemGroup>
 	<ItemGroup>
-		<None Remove="Drastic.YouTube" />
-		<None Remove="ViewModels\" />
-		<None Remove="Services\" />
-		<None Remove="Events\" />
-		<None Remove="Tools\" />
-	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="Drastic.YouTube" Version="6.6.9" />
+		<PackageReference Include="Drastic.YouTube" Version="6.6.10" />
+		<PackageReference Include="Drastic.YouTube.Converter" Version="6.6.10" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
 	</ItemGroup>
 	<ItemGroup>
-		<Folder Include="Services\" />
-		<Folder Include="Events\" />
-		<Folder Include="Tools\" />
+	  <Compile Update="Translations\Common.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Common.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Update="Translations\Common.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Common.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 </Project>

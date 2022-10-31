@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Drastic.YouTube.Explorer.Win (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Drastic.YouTube.Explorer.Win (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
