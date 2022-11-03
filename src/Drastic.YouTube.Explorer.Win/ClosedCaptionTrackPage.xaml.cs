@@ -11,7 +11,6 @@ using Drastic.YouTube.Videos.ClosedCaptions;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace Drastic.YouTube.Explorer.Win
 {
     /// <summary>
@@ -19,18 +18,18 @@ namespace Drastic.YouTube.Explorer.Win
     /// </summary>
     public sealed partial class ClosedCaptionTrackPage : BasePage
     {
-        public ClosedCaptionsViewModel vm;
+        public ClosedCaptionsViewModel Vm;
 
         public ClosedCaptionTrackPage(ClosedCaptionTrack track, ClosedCaptionTrackInfo info, Video video, IReadOnlyList<ClosedCaptionDetail> details)
         {
             this.InitializeComponent();
-            this.DataContext = this.vm = Ioc.Default.ResolveWith<ClosedCaptionsViewModel>(track, info, video, details);
+            this.DataContext = this.Vm = Ioc.Default.ResolveWith<ClosedCaptionsViewModel>(track, info, video, details);
         }
 
         public ClosedCaptionTrackPage(VideoId videoId, string language = "en")
         {
             this.InitializeComponent();
-            this.DataContext = this.vm = Ioc.Default.ResolveWith<ClosedCaptionsViewModel>(videoId, language);
+            this.DataContext = this.Vm = Ioc.Default.ResolveWith<ClosedCaptionsViewModel>(videoId, language);
         }
     }
 }

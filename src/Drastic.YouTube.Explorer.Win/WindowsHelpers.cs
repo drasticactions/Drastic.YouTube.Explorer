@@ -16,7 +16,7 @@ namespace Drastic.YouTube.Explorer.Win
         {
             var compositor = ElementCompositionPreview.GetElementVisual(panel).Compositor;
 
-            // Create ImplicitAnimations Collection. 
+            // Create ImplicitAnimations Collection.
             var elementImplicitAnimation = compositor.CreateImplicitAnimationCollection();
 
             // Define trigger and animation that should play when the trigger is triggered.
@@ -36,19 +36,19 @@ namespace Drastic.YouTube.Explorer.Win
             offsetAnimation.InsertExpressionKeyFrame(1.0f, "this.FinalValue");
             offsetAnimation.Duration = TimeSpan.FromSeconds(.4);
 
-            // Define Animation Target for this animation to animate using definition. 
+            // Define Animation Target for this animation to animate using definition.
             offsetAnimation.Target = "Offset";
 
-            // Define Rotation Animation for Animation Group. 
+            // Define Rotation Animation for Animation Group.
             var rotationAnimation = compositor.CreateScalarKeyFrameAnimation();
             rotationAnimation.InsertKeyFrame(.5f, 0.160f);
             rotationAnimation.InsertKeyFrame(1f, 0f);
             rotationAnimation.Duration = TimeSpan.FromSeconds(.4);
 
-            // Define Animation Target for this animation to animate using definition. 
+            // Define Animation Target for this animation to animate using definition.
             rotationAnimation.Target = "RotationAngle";
 
-            // Add Animations to Animation group. 
+            // Add Animations to Animation group.
             var animationGroup = compositor.CreateAnimationGroup();
             animationGroup.Add(offsetAnimation);
             animationGroup.Add(rotationAnimation);

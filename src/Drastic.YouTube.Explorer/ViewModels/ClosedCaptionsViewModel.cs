@@ -2,12 +2,12 @@
 // Copyright (c) Drastic Actions. All rights reserved.
 // </copyright>
 
+using System.Collections.ObjectModel;
 using Drastic.YouTube.Exceptions;
 using Drastic.YouTube.Explorer.Models;
 using Drastic.YouTube.Explorer.Tools;
 using Drastic.YouTube.Videos;
 using Drastic.YouTube.Videos.ClosedCaptions;
-using System.Collections.ObjectModel;
 
 namespace Drastic.YouTube.Explorer.ViewModels
 {

@@ -14,7 +14,10 @@ namespace Drastic.YouTube.Explorer.Win.UserControls
 {
     public sealed partial class ThumbnailListControl : UserControl
     {
-        IPlatformService platform;
+        public static readonly DependencyProperty ThumbnailListContentProperty = DependencyProperty.Register("ThumbnailList", typeof(FrameworkElement),
+            typeof(ThumbnailListControl), new PropertyMetadata(null));
+
+        private IPlatformService platform;
 
         public ThumbnailListControl()
         {
@@ -23,13 +26,10 @@ namespace Drastic.YouTube.Explorer.Win.UserControls
             this.platform = Ioc.Default.GetService(typeof(IPlatformService)) as IPlatformService ?? throw new NullReferenceException(nameof(IPlatformService));
         }
 
-        public static readonly DependencyProperty ThumbnailListContentProperty = DependencyProperty.Register("ThumbnailList", typeof(FrameworkElement),
-            typeof(ThumbnailListControl), new PropertyMetadata(null));
-
         public IReadOnlyList<Thumbnail> ThumbnailList
         {
-            get { return (IReadOnlyList<Thumbnail>)GetValue(ThumbnailListContentProperty); }
-            set { SetValue(ThumbnailListContentProperty, value); }
+            get { return (IReadOnlyList<Thumbnail>)this.GetValue(ThumbnailListContentProperty); }
+            set { this.SetValue(ThumbnailListContentProperty, value); }
         }
 
         private void GridView_ItemClick(object sender, ItemClickEventArgs e)

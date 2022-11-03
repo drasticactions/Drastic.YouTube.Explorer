@@ -10,27 +10,27 @@ namespace Drastic.YouTube.Explorer.Win.UserControls
 {
     public sealed partial class HolderControl : UserControl
     {
+        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(FrameworkElement),
+            typeof(HolderControl), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty MainViewPaneContentProperty = DependencyProperty.Register("MainViewContent", typeof(FrameworkElement),
+            typeof(HolderControl), new PropertyMetadata(null));
+
         public HolderControl()
         {
             this.InitializeComponent();
         }
 
-        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(FrameworkElement),
-            typeof(HolderControl), new PropertyMetadata(null));
-
         public string Title
         {
-            get { return (string)GetValue(TitleProperty); }
-            set { SetValue(TitleProperty, value); }
+            get { return (string)this.GetValue(TitleProperty); }
+            set { this.SetValue(TitleProperty, value); }
         }
-
-        public static readonly DependencyProperty MainViewPaneContentProperty = DependencyProperty.Register("MainViewContent", typeof(FrameworkElement),
-            typeof(HolderControl), new PropertyMetadata(null));
 
         public FrameworkElement MainViewContent
         {
-            get { return (FrameworkElement)GetValue(MainViewPaneContentProperty); }
-            set { SetValue(MainViewPaneContentProperty, value); }
+            get { return (FrameworkElement)this.GetValue(MainViewPaneContentProperty); }
+            set { this.SetValue(MainViewPaneContentProperty, value); }
         }
     }
 }

@@ -16,13 +16,13 @@ namespace Drastic.YouTube.Explorer.Win
     /// </summary>
     public sealed partial class VideoDetailPage : BasePage
     {
-        public VideoDetailViewModel vm;
+        public VideoDetailViewModel Vm;
 
         public VideoDetailPage(VideoId videoId)
             : base()
         {
             this.InitializeComponent();
-            this.DataContext = this.vm = Ioc.Default.ResolveWith<VideoDetailViewModel>(videoId);
+            this.DataContext = this.Vm = Ioc.Default.ResolveWith<VideoDetailViewModel>(videoId);
         }
 
         public VideoDetailPage(Video video)
@@ -32,9 +32,9 @@ namespace Drastic.YouTube.Explorer.Win
             this.DataContext = Ioc.Default.ResolveWith<VideoDetailViewModel>(video);
         }
 
-        string GetThumbnail(int i)
+        private string GetThumbnail(int i)
         {
-            return this.vm.Video?.Thumbnails[i].Url ?? string.Empty;
+            return this.Vm.Video?.Thumbnails[i].Url ?? string.Empty;
         }
     }
 }

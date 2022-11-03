@@ -2,10 +2,10 @@
 // Copyright (c) Drastic Actions. All rights reserved.
 // </copyright>
 
+using System.Globalization;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
-using System.Globalization;
 using Windows.Storage.Streams;
 
 namespace Drastic.YouTube.Explorer.Win
