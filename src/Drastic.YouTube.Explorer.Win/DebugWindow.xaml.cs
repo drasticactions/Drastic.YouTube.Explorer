@@ -2,7 +2,9 @@
 // Copyright (c) Drastic Actions. All rights reserved.
 // </copyright>
 
+using Drastic.YouTube.Explorer.Tools;
 using Drastic.YouTube.Videos;
+using Drastic.YouTube.Videos.ClosedCaptions;
 using Microsoft.UI.Xaml;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -14,9 +16,12 @@ namespace Drastic.YouTube.Explorer.Win
     /// </summary>
     public sealed partial class DebugWindow : Window
     {
+        private YoutubeClient client;
+
         public DebugWindow()
         {
             this.InitializeComponent();
+            this.client = new YoutubeClient();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -28,6 +33,19 @@ namespace Drastic.YouTube.Explorer.Win
             }
 
             var videoPage = new VideoDetailPage(videoId.Value);
+            var popup = new BaseWindow(videoPage);
+            popup.Activate();
+        }
+
+        private async void ButtonTwo_Click(object sender, RoutedEventArgs e)
+        {
+            var videoId = VideoId.TryParse(this.DebugText.Text);
+            if (videoId is not VideoId vidId)
+            {
+                return;
+            }
+
+            var videoPage = new ClosedCaptionTrackPage(videoId.Value);
             var popup = new BaseWindow(videoPage);
             popup.Activate();
         }

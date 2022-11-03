@@ -31,6 +31,7 @@ namespace Drastic.YouTube.Explorer.ViewModels
             this.Dispatcher = services.GetService(typeof(IAppDispatcher)) as IAppDispatcher ?? throw new NullReferenceException(nameof(IAppDispatcher));
             this.ErrorHandler = services.GetService(typeof(IErrorHandlerService)) as IErrorHandlerService ?? throw new NullReferenceException(nameof(IErrorHandlerService));
             this.Platform = services.GetService(typeof(IPlatformService)) as IPlatformService ?? throw new NullReferenceException(nameof(IPlatformService));
+            this.SetupCommands();
         }
 
         /// <summary>
@@ -163,6 +164,10 @@ namespace Drastic.YouTube.Explorer.ViewModels
             {
                 this.Title = title;
             }
+        }
+
+        internal virtual void SetupCommands()
+        {
         }
 
 #pragma warning disable SA1600 // Elements should be documented

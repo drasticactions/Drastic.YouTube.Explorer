@@ -18,11 +18,11 @@
                 </Grid.RowDefinitions>
                 <Grid x:Name="AppTitleBar" Grid.Row="0" Height="34">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="32"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="130"/>
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Margin="8,0,0,0" Width="32" Height="32" Source="Assets/Images/favicon.png" x:Name="AppIcon" />
+                    <Image Grid.Column="0" Margin="8,0,0,0" Width="24" Height="24" Source="Assets/Images/favicon.png" x:Name="AppIcon" />
                     <TextBlock Grid.Column="1"  x:Name="AppTitleTextBlock" Text="{Binding Title}"
                        Style="{StaticResource CaptionTextBlockStyle}"
                                TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"

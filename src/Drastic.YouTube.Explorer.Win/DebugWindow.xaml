@@ -10,5 +10,6 @@
     <StackPanel>
         <TextBox x:Name="DebugText" Text="https://www.youtube.com/watch?v=biYciU1uiUw" PlaceholderText="Debug Data" />
         <Button Click="Button_Click">Launch Video Detail.</Button>
+        <Button x:Name="ButtonTwo" Click="ButtonTwo_Click">Launch Closed Caption.</Button>
     </StackPanel>
 </Window>

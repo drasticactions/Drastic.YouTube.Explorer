@@ -13,9 +13,11 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <Content Remove="Assets\favicon.png" />
+	  <Content Remove="Assets\Images\default.jpg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <None Remove="BaseWindow.xaml" />
+	  <None Remove="ClosedCaptionTrackPage.xaml" />
 	  <None Remove="DebugWindow.xaml" />
 	  <None Remove="UserControls\HolderControl.xaml" />
 	  <None Remove="UserControls\ThumbnailListControl.xaml" />
@@ -58,6 +60,11 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Drastic.YouTube.Explorer\Drastic.YouTube.Explorer.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="ClosedCaptionTrackPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
 	</ItemGroup>
 	<ItemGroup>
 	  <Page Update="UserControls\HolderControl.xaml">

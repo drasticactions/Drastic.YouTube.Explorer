@@ -50,6 +50,7 @@
                     <TextBlock Text="{Binding IsLoadingText}" VerticalAlignment="Center" Foreground="White" />
                 </StackPanel>
             </DataTemplate>
+            <local:ImageLoadingConverter x:Key="ImageLoadingConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

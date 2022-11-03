@@ -6,7 +6,15 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="Images\favicon.png" />
+	  <None Remove="Images\thumbnail.jpg" />
+	</ItemGroup>
+	<ItemGroup>
 		<AdditionalFiles Include="..\..\stylecop.json" Link="stylecop.json" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="Images\favicon.png" />
+	  <EmbeddedResource Include="Images\thumbnail.jpg" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Drastic.YouTube" Version="6.6.10" />

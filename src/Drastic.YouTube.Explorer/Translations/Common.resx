@@ -129,6 +129,9 @@
   <data name="ChaptersHeader" xml:space="preserve">
     <value>Chapters:</value>
   </data>
+  <data name="ClosedCaptionsHeader" xml:space="preserve">
+    <value>Closed Captions</value>
+  </data>
   <data name="DescriptionHeader" xml:space="preserve">
     <value>Description</value>
   </data>

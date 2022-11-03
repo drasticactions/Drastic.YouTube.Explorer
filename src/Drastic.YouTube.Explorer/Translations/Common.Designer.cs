@@ -97,6 +97,15 @@ namespace Drastic.YouTube.Explorer.Translations {
         }
         
         /// <summary>
+        ///   Closed Captions に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ClosedCaptionsHeader {
+            get {
+                return ResourceManager.GetString("ClosedCaptionsHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Description に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string DescriptionHeader {

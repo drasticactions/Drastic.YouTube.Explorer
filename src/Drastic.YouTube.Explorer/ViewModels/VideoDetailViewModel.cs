@@ -19,14 +19,13 @@ namespace Drastic.YouTube.Explorer.ViewModels
             : base(services)
         {
             this.videoId = id;
-            this.SetupCommands();
         }
 
         public VideoDetailViewModel(Video video, IServiceProvider services)
            : base(services)
         {
             this.videoId = video.Id;
-            this.SetupCommands();
+            this.video = video;
         }
 
         /// <summary>
@@ -55,11 +54,25 @@ namespace Drastic.YouTube.Explorer.ViewModels
 
             if (this.Video is null)
             {
-                this.PerformBusyAsyncTask(() => this.UpdateVideo(), Translations.Common.LoadingMetadata).FireAndForgetSafeAsync();
+                this.PerformBusyAsyncTask(() => this.UpdateVideoAsync(), Translations.Common.LoadingMetadata).FireAndForgetSafeAsync();
             }
         }
 
-        private async Task UpdateVideo(CancellationToken token = default)
+        /// <inheritdoc/>
+        internal override void SetupCommands()
+        {
+            this.ShareLinkCommand = new AsyncCommand<Video>(
+            async (item) => await this.ShareLinkAsync(item),
+            (Video item) => item is not null && !this.IsBusy,
+            this.ErrorHandler);
+
+            this.OpenBrowserCommand = new AsyncCommand<Video>(
+           async (item) => await this.OpenBrowserAsync(item),
+           (Video item) => item is not null && !this.IsBusy,
+           this.ErrorHandler);
+        }
+
+        private async Task UpdateVideoAsync(CancellationToken token = default)
         {
             this.Video = await this.Client.Videos.GetAsync(this.videoId, token);
             this.UpdateTitle(this.Video.Title);
@@ -83,19 +96,6 @@ namespace Drastic.YouTube.Explorer.ViewModels
             }
 
             return this.Platform.OpenBrowserAsync(item.Url);
-        }
-
-        private void SetupCommands()
-        {
-            this.ShareLinkCommand = new AsyncCommand<Video>(
-            async (item) => await this.ShareLinkAsync(item),
-            (Video item) => item is not null && !this.IsBusy,
-            this.ErrorHandler);
-
-            this.OpenBrowserCommand = new AsyncCommand<Video>(
-           async (item) => await this.OpenBrowserAsync(item),
-           (Video item) => item is not null && !this.IsBusy,
-           this.ErrorHandler);
         }
     }
 }
