@@ -151,7 +151,7 @@ namespace Drastic.YouTube.Explorer.Translations {
         }
         
         /// <summary>
-        ///   Open Browser に類似しているローカライズされた文字列を検索します。
+        ///   Open in Browser に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string OpenBrowserText {
             get {

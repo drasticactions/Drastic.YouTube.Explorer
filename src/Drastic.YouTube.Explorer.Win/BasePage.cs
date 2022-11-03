@@ -10,7 +10,7 @@ namespace Drastic.YouTube.Explorer.Win
 {
     public class BasePage : Page, IDisposable
     {
-        private bool disposedValue;
+        internal bool DisposedValue;
 
         public BasePage()
         {
@@ -25,14 +25,14 @@ namespace Drastic.YouTube.Explorer.Win
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposedValue)
+            if (!this.DisposedValue)
             {
                 if (disposing)
                 {
                     this.Loaded -= this.BasePage_Loaded;
                 }
 
-                this.disposedValue = true;
+                this.DisposedValue = true;
             }
         }
 

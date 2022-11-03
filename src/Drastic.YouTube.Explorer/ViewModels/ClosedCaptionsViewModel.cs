@@ -3,8 +3,10 @@
 // </copyright>
 
 using System.Collections.ObjectModel;
+using Drastic.YouTube.Converter;
 using Drastic.YouTube.Exceptions;
 using Drastic.YouTube.Explorer.Models;
+using Drastic.YouTube.Explorer.Services;
 using Drastic.YouTube.Explorer.Tools;
 using Drastic.YouTube.Videos;
 using Drastic.YouTube.Videos.ClosedCaptions;
@@ -18,16 +20,18 @@ namespace Drastic.YouTube.Explorer.ViewModels
         private ClosedCaptionTrack? track;
         private ClosedCaptionTrackInfo? info;
         private ClosedCaptionManifest? manifest;
+        private ClosedCaptionDetail? selectedCaption;
 
+        private string filter = string.Empty;
         private string language = "en";
 
         public ClosedCaptionsViewModel(
-    ClosedCaptionTrack track,
-    ClosedCaptionTrackInfo info,
-    Video video,
-    IReadOnlyList<ClosedCaptionDetail> details,
-    IServiceProvider services)
-    : base(services)
+            ClosedCaptionTrack track,
+            ClosedCaptionTrackInfo info,
+            Video video,
+            IReadOnlyList<ClosedCaptionDetail> details,
+            IServiceProvider services)
+            : base(services)
         {
             this.Track = track;
             this.Video = video;
@@ -66,12 +70,26 @@ namespace Drastic.YouTube.Explorer.ViewModels
         public ObservableCollection<ClosedCaptionDetail> ClosedCaptions { get; }
 
         /// <summary>
+        /// Gets the ShareLinkCommand.
+        /// </summary>
+        public AsyncCommand<ClosedCaptionDetail>? DownloadClipCommand { get; private set; }
+
+        /// <summary>
         /// Gets or sets the track.
         /// </summary>
         public ClosedCaptionTrackInfo? TrackInfo
         {
             get => this.info;
             set => this.SetProperty(ref this.info, value);
+        }
+
+        /// <summary>
+        /// Gets or sets the track.
+        /// </summary>
+        public ClosedCaptionDetail? SelectedCaption
+        {
+            get => this.selectedCaption;
+            set => this.SetProperty(ref this.selectedCaption, value);
         }
 
         /// <summary>
@@ -92,6 +110,19 @@ namespace Drastic.YouTube.Explorer.ViewModels
             set => this.SetProperty(ref this.video, value);
         }
 
+        /// <summary>
+        /// Gets or sets the filter.
+        /// </summary>
+        public string Filter
+        {
+            get => this.filter;
+            set
+            {
+                this.SetProperty(ref this.filter, value);
+                this.FilterData();
+            }
+        }
+
         /// <inheritdoc/>
         public override async Task OnLoad()
         {
@@ -101,8 +132,18 @@ namespace Drastic.YouTube.Explorer.ViewModels
             {
                 this.PerformBusyAsyncTask(() => this.RefreshViewModel(), Translations.Common.LoadingMetadata).FireAndForgetSafeAsync();
             }
+            else
+            {
+                this.UpdateTitle($"{this.Video?.Title} - {this.TrackInfo?.ToString()}");
+            }
+        }
 
-            this.UpdateTitle($"{this.Video?.Title} - {this.TrackInfo?.ToString()}");
+        internal override void SetupCommands()
+        {
+            this.DownloadClipCommand = new AsyncCommand<ClosedCaptionDetail>(
+           async (item) => await this.DownloadClipAsync(item),
+           (ClosedCaptionDetail item) => item is not null && !this.IsBusy,
+           this.ErrorHandler);
         }
 
         private async Task RefreshViewModel(CancellationToken token = default)
@@ -141,10 +182,42 @@ namespace Drastic.YouTube.Explorer.ViewModels
             {
                 this.AllClosedCaptions.Add(cap);
             }
+
+            this.FilterData();
+
+            this.UpdateTitle($"{this.Video?.Title} - {this.TrackInfo?.ToString()}");
         }
 
-        private void SetupCommands()
+        private async Task DownloadClipAsync(ClosedCaptionDetail caption)
         {
+            this.PerformBusyAsyncTask(async () => {
+                var clipDuration = new ClipDuration(caption.Caption.Offset.TotalSeconds, caption.Caption.Offset.TotalSeconds + caption.Caption.Duration.TotalSeconds);
+                var clipLocation = Path.Combine(this.Platform.TemporaryClipStoragePath, $"{Path.GetRandomFileName()}.mp4");
+                var muxVideo = (await this.Client.Videos.Streams.GetManifestAsync(this.videoId))?.GetMuxedStreams().LastOrDefault();
+                if (muxVideo is null)
+                {
+                    // TODO: Handle multiple streams.
+                    // TODO: Handle if no muxed stream.
+                    return;
+                }
+
+                await this.Client.Videos.DownloadClipAsync(clipLocation, muxVideo, clipDuration);
+
+                if (File.Exists(clipLocation))
+                {
+                    this.SendMediaPlaybackRequest(Events.MediaPlaybackType.Play, clipLocation);
+                }
+            }).FireAndForgetSafeAsync(this.ErrorHandler);
+        }
+
+        private void FilterData()
+        {
+            var filteredData = this.AllClosedCaptions.Where(n => n.Caption.Text.ToLower().Contains(this.filter.ToLower()));
+            this.ClosedCaptions.Clear();
+            foreach (var cap in filteredData)
+            {
+                this.ClosedCaptions.Add(cap);
+            }
         }
     }
 }

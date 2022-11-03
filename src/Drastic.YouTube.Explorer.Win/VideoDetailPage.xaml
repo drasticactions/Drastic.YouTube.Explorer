@@ -15,21 +15,28 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <CommandBar HorizontalAlignment="Left" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
-            <AppBarButton Command="{x:Bind vm.ShareLinkCommand, Mode=OneWay}" CommandParameter="{x:Bind vm.Video, Mode=OneWay}" Icon="Share" Label="{x:Bind common:Common.ShareButtonText}"/>
-            <AppBarButton Icon="Go" Label="{x:Bind common:Common.OpenBrowserText}" Command="{x:Bind vm.OpenBrowserCommand, Mode=OneWay}" CommandParameter="{x:Bind vm.Video, Mode=OneWay}" />
-        </CommandBar>
-
+        <usercontrols:HolderControl 
+            TitleBarVisibility="Collapsed">
+            <usercontrols:HolderControl.MainViewContent>
+                <CommandBar 
+                HorizontalAlignment="Left"
+                IsOpen="False"
+                DefaultLabelPosition="Right">
+                    <AppBarButton Command="{x:Bind Vm.ShareLinkCommand, Mode=OneWay}" CommandParameter="{x:Bind Vm.Video, Mode=OneWay}" Icon="Share" Label="{x:Bind common:Common.ShareButtonText}"/>
+                    <AppBarButton Icon="Go" Label="{x:Bind common:Common.OpenBrowserText}" Command="{x:Bind Vm.OpenBrowserCommand, Mode=OneWay}" CommandParameter="{x:Bind Vm.Video, Mode=OneWay}" />
+                </CommandBar>
+            </usercontrols:HolderControl.MainViewContent>
+        </usercontrols:HolderControl>
         <ScrollViewer VerticalScrollMode="Auto" Grid.Row="1">
             <VariableSizedWrapGrid x:Name="WrapGrid" Orientation="Horizontal"
                                ItemHeight="200"
-                               Margin="20, 20, 0, 0"
+                               Margin="0, 0, 0, 0"
                                ItemWidth="250"
                                >
                 <usercontrols:HolderControl VariableSizedWrapGrid.RowSpan="2" VariableSizedWrapGrid.ColumnSpan="2" Title="{x:Bind common:Common.DescriptionHeader}">
                     <usercontrols:HolderControl.MainViewContent>
                         <ScrollViewer>
-                            <TextBlock TextWrapping="WrapWholeWords" Text="{x:Bind vm.Video.Description, Mode=OneWay}"/>
+                            <TextBlock TextWrapping="WrapWholeWords" Text="{x:Bind Vm.Video.Description, Mode=OneWay}"/>
                         </ScrollViewer>
                     </usercontrols:HolderControl.MainViewContent>
                 </usercontrols:HolderControl>
@@ -38,33 +45,33 @@
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="0,0,5,0" FontWeight="Medium" Text="{x:Bind common:Common.AuthorHeader}"/>
-                                <TextBlock Text="{x:Bind vm.Video.Author, Mode=OneWay}"/>
+                                <TextBlock Text="{x:Bind Vm.Video.Author, Mode=OneWay}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="0,0,5,0" FontWeight="Medium" Text="{x:Bind common:Common.DurationHeader}"/>
-                                <TextBlock Text="{x:Bind vm.Video.Duration, Mode=OneWay}"/>
+                                <TextBlock Text="{x:Bind Vm.Video.Duration, Mode=OneWay}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="0,0,5,0" FontWeight="Medium" Text="{x:Bind common:Common.ViewsHeader}"/>
-                                <TextBlock Text="{x:Bind vm.Video.Engagement.ViewCount, Mode=OneWay}"/>
+                                <TextBlock Text="{x:Bind Vm.Video.Engagement.ViewCount, Mode=OneWay}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="0,0,5,0" FontWeight="Medium" Text="{x:Bind common:Common.AverageRatingHeader}"/>
-                                <TextBlock Text="{x:Bind vm.Video.Engagement.AverageRating, Mode=OneWay}"/>
+                                <TextBlock Text="{x:Bind Vm.Video.Engagement.AverageRating, Mode=OneWay}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="0,0,5,0" FontWeight="Medium" Text="{x:Bind common:Common.LikeCountHeader}"/>
-                                <TextBlock Text="{x:Bind vm.Video.Engagement.LikeCount, Mode=OneWay}"/>
+                                <TextBlock Text="{x:Bind Vm.Video.Engagement.LikeCount, Mode=OneWay}"/>
                             </StackPanel>
                         </StackPanel>
                     </usercontrols:HolderControl.MainViewContent>
                 </usercontrols:HolderControl>
                 <usercontrols:HolderControl 
-                    VariableSizedWrapGrid.RowSpan="1"
-                    VariableSizedWrapGrid.ColumnSpan="1"
+                    VariableSizedWrapGrid.RowSpan="2"
+                    VariableSizedWrapGrid.ColumnSpan="2"
                     Title="{x:Bind common:Common.ChaptersHeader}">
                     <usercontrols:HolderControl.MainViewContent>
-                        <ListView ItemsSource="{x:Bind vm.Video.Chapters, Mode=OneWay}">
+                        <ListView SelectionMode="None" IsItemClickEnabled="True" ItemsSource="{x:Bind Vm.Video.Chapters, Mode=OneWay}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="drastic:ChapterDescription">
                                     <Grid Margin="1" Background="{ThemeResource  AppBarItemBackgroundThemeBrush}">
@@ -91,7 +98,10 @@
                         </ListView>
                     </usercontrols:HolderControl.MainViewContent>
                 </usercontrols:HolderControl>
-                <usercontrols:ThumbnailListControl VariableSizedWrapGrid.RowSpan="1" VariableSizedWrapGrid.ColumnSpan="2" ThumbnailList="{x:Bind vm.Video.Thumbnails, Mode=OneWay}" />
+                <usercontrols:ThumbnailListControl
+                    VariableSizedWrapGrid.RowSpan="1"
+                    VariableSizedWrapGrid.ColumnSpan="2"
+                    ThumbnailList="{x:Bind Vm.Video.Thumbnails, Mode=OneWay}" />
             </VariableSizedWrapGrid>
         </ScrollViewer>
     </Grid>

@@ -20,10 +20,10 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <AutoSuggestBox QueryIcon="Find" />
+            <AutoSuggestBox Text="{x:Bind Vm.Filter, Mode=TwoWay}" QueryIcon="Find" />
             <usercontrols:HolderControl Grid.Row="1" Title="{x:Bind common:Common.ClosedCaptionsHeader}">
                 <usercontrols:HolderControl.MainViewContent>
-                    <ListView Grid.Row="1" IsItemClickEnabled="True" SelectionMode="None" ItemsSource="{x:Bind vm.AllClosedCaptions, Mode=OneWay}" Grid.Column="0">
+                    <ListView ItemClick="ListView_ItemClick" Grid.Row="1" IsItemClickEnabled="True" SelectionMode="None" ItemsSource="{x:Bind Vm.ClosedCaptions, Mode=OneWay}" Grid.Column="0">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="models:ClosedCaptionDetail">
                                 <Grid>
@@ -46,6 +46,9 @@
                     </ListView>
                 </usercontrols:HolderControl.MainViewContent>
             </usercontrols:HolderControl>
+        </Grid>
+        <Grid Margin="15" Grid.Column="1">
+            <MediaPlayerElement x:Name="TestPlayer" AreTransportControlsEnabled="True" />
         </Grid>
     </Grid>
 </local:BasePage>

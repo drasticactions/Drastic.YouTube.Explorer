@@ -24,5 +24,15 @@ namespace Drastic.YouTube.Explorer.Services
         /// <param name="url">The URL.</param>
         /// <returns>Task.</returns>
         Task OpenBrowserAsync(string url);
+
+        /// <summary>
+        /// Gets the temporary storage path for files.
+        /// </summary>
+        string TemporaryStoragePath { get; }
+
+        /// <summary>
+        /// Gets tne temporary storage clip path.
+        /// </summary>
+        string TemporaryClipStoragePath { get; }
     }
 }

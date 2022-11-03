@@ -13,6 +13,9 @@ namespace Drastic.YouTube.Explorer.Win.UserControls
         public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(FrameworkElement),
             typeof(HolderControl), new PropertyMetadata(null));
 
+        public static readonly DependencyProperty TitleBarVisibilityProperty = DependencyProperty.Register("TitleBarVisibility", typeof(Visibility),
+            typeof(HolderControl), new PropertyMetadata(null));
+
         public static readonly DependencyProperty MainViewPaneContentProperty = DependencyProperty.Register("MainViewContent", typeof(FrameworkElement),
             typeof(HolderControl), new PropertyMetadata(null));
 
@@ -25,6 +28,12 @@ namespace Drastic.YouTube.Explorer.Win.UserControls
         {
             get { return (string)this.GetValue(TitleProperty); }
             set { this.SetValue(TitleProperty, value); }
+        }
+
+        public Visibility TitleBarVisibility
+        {
+            get { return (Visibility)this.GetValue(TitleBarVisibilityProperty); }
+            set { this.SetValue(TitleBarVisibilityProperty, value); }
         }
 
         public FrameworkElement MainViewContent

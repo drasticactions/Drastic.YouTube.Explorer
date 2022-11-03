@@ -14,6 +14,23 @@ namespace Drastic.YouTube.Explorer.Win
     {
         private static readonly Guid DtmIid = new Guid(0xa5caee9b, 0x8708, 0x49d1, 0x8d, 0x36, 0x67, 0xd2, 0x5a, 0x8d, 0xa0, 0x0c);
 
+        public string TemporaryStoragePath => Windows.Storage.ApplicationData.Current.LocalCacheFolder.Path;
+
+        public string TemporaryClipStoragePath
+        {
+            get
+            {
+                var path = Path.Combine(this.TemporaryStoragePath, "Clips");
+
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                return path;
+            }
+        }
+
         [System.Runtime.InteropServices.ComImport]
         [System.Runtime.InteropServices.Guid("3A3DCD6C-3EAB-43DC-BCDE-45671CE800C8")]
         [System.Runtime.InteropServices.InterfaceType(

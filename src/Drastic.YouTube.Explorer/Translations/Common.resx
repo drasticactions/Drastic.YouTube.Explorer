@@ -148,7 +148,7 @@
     <value>Loading Metadata...</value>
   </data>
   <data name="OpenBrowserText" xml:space="preserve">
-    <value>Open Browser</value>
+    <value>Open in Browser</value>
   </data>
   <data name="ShareButtonText" xml:space="preserve">
     <value>Share</value>

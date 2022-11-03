@@ -18,7 +18,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="10,5,5,10" Text="{x:Bind Title, Mode=OneWay}" />
+        <TextBlock Visibility="{x:Bind TitleBarVisibility, Mode=OneWay}" Grid.Row="0" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="10,5,5,10" Text="{x:Bind Title, Mode=OneWay}" />
         <ContentPresenter Margin="10,5,5,10" Content="{x:Bind MainViewContent, Mode=OneWay}" Grid.Row="1" />
     </Grid>
 </UserControl>

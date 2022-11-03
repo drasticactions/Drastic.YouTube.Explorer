@@ -40,6 +40,12 @@ namespace Drastic.YouTube.Explorer.ViewModels
         /// </summary>
         public event EventHandler<NavigationEventArgs>? Navigation;
 
+        /// <summary>
+        /// Gets a baseline media playback handler handler.
+        /// Handle this to handle media playback events within the view model.
+        /// </summary>
+        public event EventHandler<MediaPlaybackEventArgs>? MediaPlayback;
+
         /// <inheritdoc/>
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -147,6 +153,16 @@ namespace Drastic.YouTube.Explorer.ViewModels
             {
                 this.Navigation?.Invoke(this, new NavigationEventArgs(viewModel, arguments));
             }
+        }
+
+        /// <summary>
+        /// Senda a media playback request to whatever handlers attach to it.
+        /// </summary>
+        /// <param name="type">Type of media playback.</param>
+        /// <param name="arguments">Optional arguments.</param>
+        public void SendMediaPlaybackRequest(MediaPlaybackType type, object? arguments = default)
+        {
+            this.MediaPlayback?.Invoke(this, new MediaPlaybackEventArgs(type, arguments));
         }
 
         /// <summary>
